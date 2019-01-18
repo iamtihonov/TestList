@@ -2,17 +2,19 @@ package studio.evolution.testlist;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoryItemHolder> {
 
-    RepositoriesAdapter() {
-        Log.d("testLog", "RepositoriesAdapter()");
-    }
+    private String[] array = new String[1000];
 
+    RepositoriesAdapter() {
+        for (int i = 0; i < 1000; i++) {
+            array[i] = "Repository " + (i + 1);
+        }
+    }
 
     @NonNull
     @Override
@@ -24,11 +26,11 @@ public class RepositoriesAdapter extends RecyclerView.Adapter<RepositoryItemHold
 
     @Override
     public void onBindViewHolder(@NonNull RepositoryItemHolder itemHolder, int position) {
-        itemHolder.textRepositoryName.setText(String.format("Repository %1$s", position));
+        itemHolder.textRepositoryName.setText(array[position]);
     }
 
     @Override
     public int getItemCount() {
-        return 1000;
+        return array.length;
     }
 }
